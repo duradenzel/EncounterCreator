@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncounterCreator", "EncounterCreator.csproj", "{041F1185-25BB-46AB-A0ED-2C86380C8385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncounterBLL", "..\EncounterBLL\EncounterBLL.csproj", "{9262D77E-00F6-4724-9993-A527E71A302A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{041F1185-25BB-46AB-A0ED-2C86380C8385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{041F1185-25BB-46AB-A0ED-2C86380C8385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{041F1185-25BB-46AB-A0ED-2C86380C8385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{041F1185-25BB-46AB-A0ED-2C86380C8385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9262D77E-00F6-4724-9993-A527E71A302A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9262D77E-00F6-4724-9993-A527E71A302A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9262D77E-00F6-4724-9993-A527E71A302A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9262D77E-00F6-4724-9993-A527E71A302A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D7D7C76-7DDC-48CB-B703-3D83CE2F955C}
+	EndGlobalSection
+EndGlobal
