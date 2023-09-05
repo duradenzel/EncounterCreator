@@ -12,8 +12,26 @@
 html {
   position: relative;
   min-height: 100%;
+
+}
+.hero-image {
+    height: 150px;
+    
+}
+    .hero-image svg {
+        fill: red;
+    }
+
+.btn {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    
 }
 
+    .btn:hover {
+        background-color: var(--secondary);
+        border: 1px solid var(--secondary);
+    }
 
 .navbar{
     background-color: var(--primary);
