@@ -1,0 +1,121 @@
+﻿@using System.Linq
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Party</title>
+    <link rel="stylesheet" src="~/css/encounter.css" type="text/css"/>
+</head>
+<body>
+    <div class="main">
+        <div class="left">
+            <h1>Party</h1>
+            <form class="encounter-form" method="post" action="@Url.Action("GenerateEncounter", "Encounter")">
+                
+                <div class="encounter-party">
+                    <div class="encounter-input-group">
+                        <label for="partySize">Players:</label>
+                        <input type="number" name="partySize" id="partySize" required><br>
+                    </div>
+                    <div class="seperator">X</div>
+                    <div class="encounter-input-group">
+                        <label for="playerLevel">Level:</label>
+                        <input type="number" name="playerLevel" id="playerLevel" required><br>
+
+                    </div>
+                </div>
+
+                <div class="encounter-difficulty">
+                    <select name="difficulty" id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="deadly">Deadly</option>
+                    </select>
+
+                    <button type="submit">Generate Encounter</button>
+                </div>
+
+            </form>
+            
+            <div class="encounter-output">
+                @if (Model?.Monsters != null && Model.Monsters.Count > 0)
+                {
+
+                    var monsterQuantities = new Dictionary<string, int>();
+
+                    <div class="encounter-summary">
+                        <h2>EXP Goals</h2>
+                        <ul class="encounter-exp">
+                            @foreach (var xpSum in Model.XpSums)
+                            {
+                                <li>@xpSum.Key: @xpSum.Value</li>
+                            }
+                        </ul>
+
+                    </div>
+                    <h1>Monsters List</h1>
+
+                    <ul class="monster-list">
+
+                        @foreach (var monster in Model.Monsters)
+                        {
+                            if (monsterQuantities.ContainsKey(monster.Name))
+                            {
+                                monsterQuantities[monster.Name]++;
+                            }
+                            else
+                            {
+                                monsterQuantities.Add(monster.Name, 1);
+                            }
+
+
+                            <div class="monster">
+                                <div class="monster-details">
+                                    <h2 class="monster-name">@monster.Name</h2>
+                                    <p class="monster-type">@monster.Size @monster.Type</p>
+                                </div>
+                                <div class="monster-info">
+                                    <p class="monster-cr-exp">CR: @monster.CR | Exp: @monster.ExperiencePoints</p>
+                                    <div class="monster-quantity">
+                                        <button class="quantity-increase">+</button>
+                                        <input type="number" class="quantity-input" value="@monsterQuantities[monster.Name]">
+                                        <button class="quantity-decrease">-</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </ul>
+                }
+
+            </div>
+        
+        </div>
+        <div class="center"></div>
+        <div class="right"></div>
+
+    </div>
+    
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.quantity-increase').click(function () {
+            var input = $(this).siblings('.quantity-input');
+            input.val(parseInt(input.val()) + 1);
+        });
+
+        $('.quantity-decrease').click(function () {
+            var input = $(this).siblings('.quantity-input');
+            if (parseInt(input.val()) > 1) {
+                input.val(parseInt(input.val()) - 1);
+            }
+        });
+    });
+</script>
+
+</html>
+

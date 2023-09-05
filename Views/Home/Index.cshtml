@@ -1,46 +1,22 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <title>DND Encounter Generator</title>
+    <title>Party</title>
 </head>
 <body>
-    <h1>DND Encounter Generator</h1>
-    <form id="encounterForm">
+    <h1>Create Encounter</h1>
+    <form method="post" action="@Url.Action("GenerateEncounter", "Encounter")">
         <label for="partySize">Party Size:</label>
         <input type="number" name="partySize" id="partySize" required><br>
 
         <label for="playerLevel">Player Level:</label>
         <input type="number" name="playerLevel" id="playerLevel" required><br>
 
-        <label for="terrain">Terrain:</label>
-        <input type="text" name="terrain" id="terrain" required><br>
-
-        <label for="encounterType">Encounter Type:</label>
-        <input type="text" name="encounterType" id="encounterType" required><br>
-
         <button type="submit">Generate Encounter</button>
     </form>
 
-    <div id="result"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        const form = document.getElementById("encounterForm");
-        const resultDiv = document.getElementById("result");
-
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            const formData = new FormData(form);
-            const formDataObj = Object.fromEntries(formData);
-
-            try {
-                const response = await axios.post("/Home/GenerateEncounter", formDataObj);
-                resultDiv.textContent = response.data;
-            } catch (error) {
-                resultDiv.textContent = "Error: " + error.message;
-            }
-        });
-    </script>
+   
+     
 </body>
 </html>
