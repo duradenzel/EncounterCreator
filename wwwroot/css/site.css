@@ -1,11 +1,11 @@
 :root {
     --text: #092024;
     --text-light: #f4f4f4;
-    --background: #fbfdfe;
+    --background-light: #fbfdfe;
+    --background: #212529;
     --primary: #b42250;
     --secondary: #99cce6;
     --accent: #f45734;
-
     --radius: .5rem;
 }
 
@@ -41,6 +41,27 @@ html {
         text-decoration: none;
         color: white;
 
+}
+
+.navbar-logo{
+    width: 2rem;
+    margin-right: 1rem;
+   
+}
+
+
+.bar{
+    width: 100%;
+    height: 2px;
+    border-radius: var(--radius);
+    margin: 5px 0px;
+    background-color: white;
+    display: block;
+    
+}
+
+.navbar-toggler-icon{
+  color: green;
 }
 
 .main{
