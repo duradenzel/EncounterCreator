@@ -24,5 +24,10 @@ namespace EncounterCreator.Controllers
             return View("GenerateEncounter",encounter);
 
         }
+
+        public async Task<List<Monster>> GetMonsterList() {
+            List<Monster> monsterList = await _encounterService.GetMonsterList();
+            return monsterList;
+        }
     }
 }
