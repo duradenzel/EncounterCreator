@@ -99,7 +99,9 @@
         
         </div>
         <div class="center">
-            <table id="monster-list" class="table table-striped table-dark">
+            <input type="text" id="search" onkeyup="Search()" placeholder="Search for names..">
+
+            <table id="monster-table" class="table table-responsive table-striped table-dark">
                 <thead>
                     <tr>
                         <th scope="col"></th>
@@ -161,6 +163,28 @@
             row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td>`
 
             tableRow.appendChild(row);
+        }
+    }
+
+    function Search() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+        table = document.getElementById("monster-table");
+        tr = table.getElementsByTagName('tr');
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using EncounterBLL.Factories;
 using EncounterDAL;
 using EncounterInterfaces;
 
@@ -13,6 +14,8 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IEncounterService, EncounterService>();
 builder.Services.AddScoped<IMonsterApiService, MonsterApi>();
+builder.Services.AddScoped<IDataAccessFactory, DataAccessFactory>();
+
 
 var app = builder.Build();
 
