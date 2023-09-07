@@ -278,7 +278,7 @@ input::-webkit-inner-spin-button {
 /* Pagination styling */
 .pagination {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
@@ -286,6 +286,13 @@ input::-webkit-inner-spin-button {
 #prev-page,
 #next-page {
     margin: 0 10px;
+    background: none;
+    border: none;
+    color: var(--accent);
+}
+
+#prev-page:disabled,#next-page:disabled{
+    opacity: 0.5;
 }
 
 ul#pagination-list {
@@ -295,11 +302,11 @@ ul#pagination-list {
     align-items: center;
 }
 
-    ul#pagination-list li {
-        margin: 0 5px;
-        cursor: pointer;
-    }
+ul#pagination-list li {
+    margin: 0 5px;
+    cursor: pointer;
+}
 
-        ul#pagination-list li.active {
-            font-weight: bold;
-        }
+ul#pagination-list li.active {
+    font-weight: bold;
+}

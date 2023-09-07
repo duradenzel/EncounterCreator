@@ -1,6 +1,6 @@
 ﻿function Search() {
     // Declare variables
-    var input, filter, ul, li, a, i, txtValue;
+    var input, filter, table, tr, i, txtValue;
     input = document.getElementById('search');
     filter = input.value.toUpperCase();
     table = document.getElementById("monster-table");
