@@ -77,7 +77,7 @@
                                     <p class="monster-type">@monster.Size @monster.Type</p>
                                 </div>
                                 <div class="monster-info">
-                                    <p class="monster-cr-exp">CR: @monster.CR | Exp: @monster.ExperiencePoints</p>
+                                    <p class="monster-cr-exp">CR: <span id="monster-cr">@monster.CR</span> | Exp: <span id="monster-exp">@monster.ExperiencePoints</span></p>
                                     <div class="monster-quantity">
                                         <button class="quantity-increase">+</button>
                                         <input type="number" class="quantity-input" value="@monsterQuantities[monster.Name]">
@@ -90,7 +90,7 @@
                     </ul>
                 <div>
                     
-                    <p>Total Exp: @Model.TotalExp</p>
+                        <p>Total Exp: <span id="exp-total">@Model.TotalExp</span></p>
                     <p>Adjusted Exp: @Model.AdjustedExp</p>
                 </div>
                 }
@@ -114,6 +114,13 @@
                     
                 </tbody>
             </table>
+            <div class="pagination">
+                <ul id="pagination-list">
+                    <!-- Page numbers and buttons will be added here -->
+                </ul>
+                <button id="prev-page">Previous</button>
+                <button id="next-page">Next</button>
+            </div>
         </div>
         <div class="right"></div>
 
@@ -123,72 +130,9 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.quantity-increase').click(function () {
-            var input = $(this).siblings('.quantity-input');
-            input.val(parseInt(input.val()) + 1);
-        });
+<script src="/js/Encounter.js"></script>
+<script src="/js/MonsterTable.js"></script>
 
-        $('.quantity-decrease').click(function () {
-            var input = $(this).siblings('.quantity-input');
-            if (parseInt(input.val()) > 1) {
-                input.val(parseInt(input.val()) - 1);
-            }
-        });
-
-
-      loadMonsterList();
-    });
-
-    async function loadMonsterList() {
-        try {
-            const response = await fetch('/Encounter/GetMonsterList');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            displayMonsterList(data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    function displayMonsterList(monsters) {
-        const tableRow = document.getElementById("monster-list-body");
-
-        for (const i of monsters) {
-            console.log(i);
-            var row = document.createElement('tr');
-            row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td>`
-
-            tableRow.appendChild(row);
-        }
-    }
-
-    function Search() {
-        // Declare variables
-        var input, filter, ul, li, a, i, txtValue;
-        input = document.getElementById('search');
-        filter = input.value.toUpperCase();
-        table = document.getElementById("monster-table");
-        tr = table.getElementsByTagName('tr');
-
-        // Loop through all list items, and hide those who don't match the search query
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-
-</script>
 
 </html>
 

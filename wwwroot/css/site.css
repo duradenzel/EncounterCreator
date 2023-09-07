@@ -274,3 +274,32 @@ input::-webkit-inner-spin-button {
     border: 1px solid #ddd; /* Add a grey border */
     margin-bottom: 12px; /* Add some space below the input */
 }
+
+/* Pagination styling */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#prev-page,
+#next-page {
+    margin: 0 10px;
+}
+
+ul#pagination-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+    ul#pagination-list li {
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+        ul#pagination-list li.active {
+            font-weight: bold;
+        }
