@@ -40,7 +40,7 @@
             </form>
             
             <div class="encounter-output">
-                @if (Model?.Monsters != null && Model.Monsters.Count > 0)
+                @if (Model?.Monsters != null && Model?.Monsters.Count > 0)
                 {
 
                     var monsterQuantities = new Dictionary<string, int>();
@@ -48,7 +48,7 @@
                     <div class="encounter-summary">
                         <h2>EXP Goals</h2>
                         <ul class="encounter-exp">
-                            @foreach (var xpSum in Model.XpSums)
+                            @foreach (var xpSum in Model?.XpSums)
                             {
                                 <li>@xpSum.Key: @xpSum.Value</li>
                             }
