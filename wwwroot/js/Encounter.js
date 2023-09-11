@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function () {
     $('.quantity-increase').click(function () {
         var input = $(this).siblings('.quantity-input');
         input.val(parseInt(input.val()) + 1);

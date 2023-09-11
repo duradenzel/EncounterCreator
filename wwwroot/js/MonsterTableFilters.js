@@ -1,16 +1,26 @@
-﻿var sizeFilters = [];
+﻿ var sizeFilters = [];
 
 $(document).ready(function () {
 
     $('#size-filter').on('change', function () {
         //console.log(sizeFilters);
         UpdateTags(this.value);
+        loadMonsterPage(currentPage, extractTagsToArray());
         console.log(sizeFilters)
         this.value = "default";
 
        
     });
 });
+
+
+function extractTagsToArray() {
+    const tagsArray = [];
+    $('.filter-tags .filter-tag').each(function () {
+        tagsArray.push($(this).text());
+    });
+    return tagsArray;
+}
 
 
 function UpdateTags(tag) {

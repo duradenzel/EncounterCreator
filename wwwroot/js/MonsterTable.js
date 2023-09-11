@@ -48,9 +48,6 @@ function displayMonsterList(monsters) {
 }
 
 
-
-
-
 const monstersPerPage = 10; 
 let currentPage = 1;
 
@@ -81,24 +78,38 @@ $(document).ready(function () {
     });
 });
 
-function loadMonsterPage(page) {
+function loadMonsterPage(page, filters = []) {
     const startIndex = (page - 1) * monstersPerPage;
     const endIndex = startIndex + monstersPerPage;
 
-    const monstersOnPage = monsterData.slice(startIndex, endIndex);
+    const filteredMonsters = applyFilters(monsterData, filters);
+
+
+    const monstersOnPage = filteredMonsters.slice(startIndex, endIndex);
     displayMonsterList(monstersOnPage);
 
     const table = document.getElementById("monster-list-body");
-    table.innerHTML = ''; // Clear the content
+    table.innerHTML = ''; 
 
-    // Append the new monsters to the list
     for (const i of monstersOnPage) {
         var row = document.createElement('tr');
-        row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td>`;
+        row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td><td>${i.size}</td>`;
         table.appendChild(row);
     }
 
     updatePaginationButtons(page);
+}
+
+function applyFilters(data, filters) {
+    if (filters.length === 0) {
+        return data; // No filters applied, return all data
+    }
+
+    // Apply filters based on filter tags
+    return data.filter(monster => {
+        // Check if any of the selected tags match the monster's size (or other filter criteria)
+        return filters.includes(monster.size); // Replace 'size' with the appropriate property
+    });
 }
 
 
