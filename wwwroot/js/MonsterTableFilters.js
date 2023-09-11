@@ -1,13 +1,12 @@
 ﻿var sizeFilters = [];
 
-
-
 $(document).ready(function () {
 
     $('#size-filter').on('change', function () {
         //console.log(sizeFilters);
         UpdateTags(this.value);
         console.log(sizeFilters)
+        this.value = "default";
 
        
     });
