@@ -319,3 +319,17 @@ ul#pagination-list li.active {
 
 /*Monster Filters*/
 
+.filter-tags{
+    width: 100%;
+    height: 30px;
+   display: flex;
+   margin: .5rem 0rem
+}
+
+.filter-tag {
+    border-radius: var(--radius);
+    background-color: var(--primary);
+    margin-right: 0.5rem;
+    padding: .5rem;
+    line-height: .5rem;
+}
