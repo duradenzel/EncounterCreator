@@ -102,13 +102,11 @@ function loadMonsterPage(page, filters = []) {
 
 function applyFilters(data, filters) {
     if (filters.length === 0) {
-        return data; // No filters applied, return all data
+        return data; 
     }
 
-    // Apply filters based on filter tags
     return data.filter(monster => {
-        // Check if any of the selected tags match the monster's size (or other filter criteria)
-        return filters.includes(monster.size); // Replace 'size' with the appropriate property
+        return filters.includes(monster.size); 
     });
 }
 
@@ -119,7 +117,7 @@ function updatePaginationButtons(currentPage) {
     const paginationList = $('#pagination-list');
     paginationList.empty();
 
-    const maxPagesToShow = 5; // Maximum number of page numbers to display
+    const maxPagesToShow = 5; 
 
     if (totalPages <= maxPagesToShow) {
         for (let i = 1; i <= totalPages; i++) {
