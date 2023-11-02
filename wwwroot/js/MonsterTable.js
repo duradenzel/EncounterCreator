@@ -36,18 +36,6 @@ async function loadMonsterList() {
 }
 
 
-function displayMonsterList(monsters) {
-    const tableRow = document.getElementById("monster-list-body");
-
-    for (const i of monsters) {
-        var row = document.createElement('tr');
-        row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td>`
-
-        tableRow.appendChild(row);
-    }
-}
-
-
 const monstersPerPage = 10; 
 let currentPage = 1;
 
@@ -86,14 +74,17 @@ function loadMonsterPage(page, filters = []) {
 
 
     const monstersOnPage = filteredMonsters.slice(startIndex, endIndex);
-    displayMonsterList(monstersOnPage);
+    
 
     const table = document.getElementById("monster-list-body");
     table.innerHTML = ''; 
 
     for (const i of monstersOnPage) {
         var row = document.createElement('tr');
-        row.innerHTML = `<th scope='row'> <a>Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td><td>${i.size}</td>`;
+        row.innerHTML = `<th scope='row'> <a class="add-monster" onclick="AddMonsterToEncounter('${i.name}')">Add</a> </th><td>${i.name}</td><td>${i.cr}</td><td>${i.type}</td>`
+
+      
+        
         table.appendChild(row);
     }
 
@@ -109,8 +100,6 @@ function applyFilters(data, filters) {
         return filters.includes(monster.size); 
     });
 }
-
-
 
 function updatePaginationButtons(currentPage) {
     const totalPages = Math.ceil(monsterData.length / monstersPerPage);
@@ -160,7 +149,6 @@ function updatePaginationButtons(currentPage) {
     $('#next-page').prop('disabled', currentPage === totalPages);
 }
 
-
 function addPageNumber(paginationList, currentPage, pageNumber) {
     const li = $('<li>');
     li.text(pageNumber);
@@ -172,3 +160,52 @@ function addPageNumber(paginationList, currentPage, pageNumber) {
     paginationList.append(li);
 }
 
+
+function AddMonsterToEncounter(monsterToAdd) {
+    console.log(monsterToAdd);
+    let monster = monsterData.find(m => m.name == monsterToAdd);
+    monster = capitalizeKeys(m);
+    console.log(m);
+    let monsterList = document.getElementsByClassName("monster-list");
+    
+    let monsterRow = `<div class="monster">
+                                <div class="monster-details">
+                                    <h6 class="monster-name">${monster.name}</h6>
+                                    <p class="monster-type">${monster.size} ${monster.name}</p>
+                                </div>
+                                <div class="monster-info">
+                                    <p class="monster-cr-exp">CR: <span id="monster-cr">${monster.cr}</span> | Exp: <span id="monster-exp">100</span></p>
+                                    <div class="monster-quantity">
+                                        <button class="quantity-increase">+</button>
+                                        <input type="number" class="quantity-input" value="1" >
+                                        <button class="quantity-decrease">-</button>
+                                    </div>
+                                </div>
+                            </div>`
+
+    monsterList.innerHTML += monsterRow;
+
+    //$.ajax({
+    //    url: '/Encounter/AddMonster', 
+    //    type: 'POST',
+    //    contentType: 'application/json',
+    //    data: JSON.stringify({ monster: m }),
+    //    success: function (result) {
+            
+    //    },
+    //    error: function (error) {
+            
+    //    }
+    //});
+
+
+}
+
+
+function capitalizeKeys(obj) {
+    return Object.keys(obj).reduce((acc, key) => {
+        const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
+        acc[capitalizedKey] = obj[key];
+        return acc;
+    }, {});
+}

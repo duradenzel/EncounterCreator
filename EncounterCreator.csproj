@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EncounterBLL\EncounterBLL.csproj" />
-    <ProjectReference Include="..\EncounterDAL\EncounterDAL.csproj" />
     <ProjectReference Include="..\EncounterInterfaces\EncounterInterfaces.csproj" />
   </ItemGroup>
 

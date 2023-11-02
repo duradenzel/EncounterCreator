@@ -160,6 +160,7 @@ h1{
 .monster-list{
     max-height: 400px;
     overflow-y: scroll;
+    margin-left: -50px;
 }
 
 .monster {
@@ -167,8 +168,8 @@ h1{
     align-items: center;
     justify-content: space-between;
     padding-left: 10px;
-    border: 1px solid #ddd;
     margin: 10px 0;
+    
     
 }
 
@@ -178,7 +179,7 @@ h1{
 }
 
 .monster-name {
-    font-size: 1.2em;
+    
     font-weight: bold;
     margin: 0;
 }
@@ -203,7 +204,7 @@ h1{
 
 .monster-quantity {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin-left: 10px;
 }

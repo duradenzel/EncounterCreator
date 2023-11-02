@@ -1,16 +1,13 @@
 using EncounterBLL.Factories;
-using EncounterDAL;
+using MonsterApiDAL;
 using EncounterInterfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Logging.AddConsole();
 builder.Services.AddControllersWithViews();
-
-// Register your services here.
 builder.Services.AddMemoryCache();
-
 
 builder.Services.AddScoped<IEncounterService, EncounterService>();
 builder.Services.AddScoped<IMonsterApiService, MonsterApi>();

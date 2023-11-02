@@ -73,7 +73,7 @@
 
                             <div class="monster">
                                 <div class="monster-details">
-                                    <h2 class="monster-name">@monster.Name</h2>
+                                    <h6 class="monster-name">@monster.Name</h6>
                                     <p class="monster-type">@monster.Size @monster.Type</p>
                                 </div>
                                 <div class="monster-info">
@@ -100,7 +100,8 @@
         </div>
         <div class="center">
             <input type="text" id="search" onkeyup="Search()" placeholder="Search for names..">
-
+            
+            
             <table id="monster-table" class="table table-responsive table-striped table-dark">
                 <thead>
                     <tr>
@@ -118,7 +119,7 @@
             <div class="pagination">
                 <button id="prev-page"> &larr; Previous</button>
                 <ul id="pagination-list">
-                    <!-- Page numbers and buttons will be added here -->
+
                 </ul>
                 <button id="next-page">Next &rarr;</button>
             </div>
